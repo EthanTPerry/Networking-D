@@ -1,0 +1,13 @@
+Socket Script Demo 1
+
+#!/usr/bin/python3
+import socket  #CLIENT SIDE CONNECTION, SENDS THE DATA tO SERVER
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM, 0)  #Inet = IPv4 to STREAM = TCP data
+ip_addr = '127.0.0.1' # The IP of the device said S data will go
+port = 1111 #The Port of the device said s data will go
+s.connect((ip_addr, port))  # connects data stream to X ip addr at X port
+message = b"Message" # Converts the 'message' into binary, stores the binary data to the message variable
+s.send(message)  # sends message variable to port 1111 on machine ip_addr
+data, conn = s.recvfrom(1024)  # collects the 1024 byte reply from the server.
+print(data.decode('utf-8')) # decodes the recieved data and prints it to the screen, utf-8 is the default decoder.
+s.close() # Closes the socket.
