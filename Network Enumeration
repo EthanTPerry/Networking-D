@@ -1,0 +1,141 @@
+Reconnaissance --- Open Source Resources
+https://osintframework.com/
+
+
+  --Domain Tools
+  --CentralOps.net
+  --Web-check.xyz
+  --iplocation.io
+  --bgpview.io
+IP addresses and Sub-Domains
+  --webcheck.xyz
+  --sitereport.netcraft
+Indentifying External 3rd Party sites 
+  --
+Indetifying People
+  --
+Indentifying Technologies
+  --
+Indentifying Content of Interest
+  --
+Indentifying Vulnerabilities
+
+Enumeration
+  --whois --- Iana
+  --dig <url> <A AAAA MX SOA TXT SOA>
+  --ACTIVE-- dig axfr <@soa> <url>
+Network Resources and shares
+  --
+Users and Groups
+  --
+Routing Table
+  --
+Auditing and Service settings
+  --
+Machine Names
+  --
+Applications and banners
+  --
+SNMP and DNS details
+  --
+Other Common Services and ports
+  --
+
+
+
+
+
+
+ACTIVE EXTERNAL
+  --Remote to Local
+    ----Redirector to target
+  --Local to Remote
+    ----Using Orginzational resources to scan (Very illegal)
+      --Trying to obfuscate our data and get someone else implicated.
+  --Local to Local
+    ----Net admin type shit (Within organization)
+  --Remote to Remote
+    ----Worldwide scanning data?
+  Strobe Scan
+      - 21-23,80
+
+
+  PING SWEEP
+    for i in {1..254}; do (ping -c 1 172.16.82.$i | grep "bytes from" &) ; done
+
+  Nmap
+  sudo namp -sS <target>
+  UDP SCAN 
+    sudo nmap -sU <target>
+      -Pn
+#!/bin/bash
+echo "Enter network address (e.g. 192.168.0): "
+read net
+echo "Enter starting host range (e.g. 1): "
+read start
+echo "Enter ending host range (e.g. 254): "
+read end
+echo "Enter ports space-delimited (e.g. 21-23 80): "
+read ports
+for ((i=$start; $i<=$end; i++))
+do
+    nc -nvzw1 $net.$i $ports 2>&1 | grep -E 'succ|open'
+done
+
+
+
+Banner Grabbing
+  --- nc [Target IP] [Target Port]
+      ssh is ssh
+      DIAMONDS is telnet
+for http
+  type get
+
+
+
+
+
+
+Host Discovery
+    Ruby Ping sweep if ping available
+        for i in {1..254}; do (ping -c 1 192.168.1.$u 2>/dev/null | grep "bytes from" &) ;done
+    Nmap scan if no ping
+
+Port Discovery
+    nmap 
+    nc scan script
+
+Port Validation
+    Banner Grab using nc [ip addr] [port]
+dtic.mil
+Followon action
+    if 21 or 80 
+        wget -r <ip addr> (or) wget -r ftp://<ip addr> (or) firefox
+    if 22 or 23 CONNECT and PASSIVE RECON
+    If no 22 or 23 and you NEED to GET ON the box and you have port 21
+        FTP <IP addr>
+            passive
+            ls
+            get <file name>
+
+Scan Methodology 
+    nmap -Pn <ip addr> -T4 -p 21-23,80
+      quick scan ports
+      specific ports based on hints/clues
+      well known port range
+      which tcpdump wireshark nmap telnet 
+            scan 0-1023 
+      chunks of 2000 or first 10000 pots
+      hail mary scan all 65535 ports
+
+Passive recon 
+    Italicized/bolded words are commands
+  hostname
+  sudo -l
+  ip a
+  show interface {VYOS}
+  ip neigh
+  ip route
+  show ip route {VYOS}
+  ss -ntlp
+  which tcpdump wireshark nmap telnet get curl ping
