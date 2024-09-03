@@ -1,0 +1,94 @@
+ssh -p <optional alt port> <user>@<server ip> -L <local bind port>:<tgt ip>:<tgt port> -NT
+
+or
+
+ssh -L <local bind port>:<tgt ip>:<tgt port> -p <alt port> <user>@<server ip> -NT
+
+Local Port Forward to localhost of server
+
+Internet_Host:
+ssh student@172.16.1.15 -L 1122:localhost:22
+or
+ssh -L 1122:localhost:22 student@172.16.1.15
+
+Internet_Host:
+ssh student@localhost -p 1122
+Blue_DMZ_Host-1~$
+
+Local Port Forward to localhost of server
+
+local1
+Dynamic Port Forwarding
+
+ssh <user>@<server ip> -p <alt port> -D 9050 -NT
+or
+ssh -D 9050 -p <alt port> <user>@<server ip> -NT
+
+    Proxychains default port is 9050
+
+    Creates a dynamic socks4 proxy that interacts alone, or with a previously established remote or local port forward.
+
+    Allows the use of scripts and other userspace programs through the tunnel.
+
+SSH Dynamic Port Forwarding 1-Step
+ssh -p <optional alt port> <user>@<server ip> -L <local bind port>:<tgt ip>:<tgt port> -NT
+
+or
+
+ssh -L <local bind port>:<tgt ip>:<tgt port> -p <alt port> <user>@<server ip> -NT
+
+Local Port Forward to localhost of server
+
+Internet_Host:
+ssh student@172.16.1.15 -L 1122:localhost:22
+or
+ssh -L 1122:localhost:22 student@172.16.1.15
+
+Internet_Host:
+ssh student@localhost -p 1122
+Blue_DMZ_Host-1~$
+
+Local Port Forward to localhost of server
+
+local1
+Dynamic Port Forwarding
+
+ssh <user>@<server ip> -p <alt port> -D <port> -NT
+or
+ssh -D <port> -p <alt port> <user>@<server ip> -NT
+
+    Proxychains default port is 9050
+
+    Creates a dynamic socks4 proxy that interacts alone, or with a previously established remote or local port forward.
+
+    Allows the use of scripts and other userspace programs through the tunnel.
+
+SSH Dynamic Port Forwarding 1-Step
+
+Internet_Host:
+ssh student@172.16.1.15 -D 9050
+or
+ssh -D 9050 student@172.16.1.15
+
+Remote Port Forwarding
+
+ssh -p <optional alt port> <user>@<server ip> -R <remote bind port>:<tgt ip>:<tgt port> -NT
+
+or
+
+ssh -R <remote bind port>:<tgt ip>:<tgt port> -p <alt port> <user>@<server ip> -NT
+
+
+Internet_Host:
+ssh student@172.16.1.15 -D 9050
+or
+ssh -D 9050 student@172.16.1.15
+
+Remote Port Forwarding
+
+ssh -p <optional alt port> <user>@<server ip> -R <remote bind port>:<tgt ip>:<tgt port> -NT
+
+or
+
+ssh -R <remote bind port>:<tgt ip>:<tgt port> -p <alt port> <user>@<server ip> -NT
+
