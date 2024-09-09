@@ -1,0 +1,5 @@
+don't flush unless default policy to accept
+
+iptables -t <table> -A <chain> <rules> -j <accept, deny, drop>
+
+https://net.cybbh.io/-/public/-/jobs/875942/artifacts/modules/networking/slides-v4/11_acl-h.html
